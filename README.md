@@ -18,6 +18,8 @@ The manual for custom merge drivers can be found here: https://git-scm.com/docs/
 `git merge` is a highly configurable command. Therefore our merge driver must cover many different fronts if it plans to override the entire experience.
 
 ## Honor  Merge Strategies
+Update: Merge strategies have nothing to do w/ drivers. -> Strategies are how commits are dealt with. Drivers are the actual text vs text algorithm.
+
 From experimentation, custom merge drivers are not called when on options `-s ours` or `-s theirs`.
 Seemingly impossible to honor strategy other options passed in though. Other strategies can be seen here: [link](https://git-scm.com/docs/git-merge#_merge_strategies)
 
