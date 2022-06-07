@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GitMergeDriverSpike": {
+      "commandName": "Project",
+      "commandLineArgs": "file_o.cs file_a.cs file_b.cs 7 file_result.cs"
+    }
+  }
+}

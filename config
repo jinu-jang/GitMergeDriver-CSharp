@@ -1,0 +1,11 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[merge "customMerge"]
+	name = Custom Merge Driver Example
+	driver = GitMergeDriverSpike/bin/Debug/net6.0/GitMergeDriverSpike.exe %O %A %B %L %P
+	recursive = binary
