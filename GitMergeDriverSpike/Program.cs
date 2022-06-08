@@ -1,5 +1,4 @@
-﻿using System.Collections.Specialized;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace GitMergeDriverSpike
 {
@@ -18,10 +17,10 @@ namespace GitMergeDriverSpike
             Console.WriteLine($"L: {inputArgs.ConflictMarkerSize}");
             Console.WriteLine($"P: {inputArgs.OutputFileName}");
 
-            GitMerge(inputArgs);
+            var conflictFile = GitMerge(inputArgs);
 
             // Figure out branch names.
-            // Potential: MERGE_MSG in .git
+            // Potential: MERGE_MSG in .git: https://stackoverflow.com/questions/50638765/what-does-internal-external-merge-mean-in-git
             // .git can be found through command `git rev-parse --git-dir`
             // Potentially broken w/ configuration: http://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergesuppressDest
 
@@ -37,7 +36,7 @@ namespace GitMergeDriverSpike
             p.StartInfo.RedirectStandardOutput = true;
             p.StartInfo.RedirectStandardError = true;
             p.StartInfo.FileName = "git";
-            p.StartInfo.Arguments = $"merge-file --stdout {args.AFileName} {args.OFileName} {args.BFileName}";
+            p.StartInfo.Arguments = $"merge-file --stdout --diff3 {args.AFileName} {args.OFileName} {args.BFileName}";
             p.Start();
 
             string stdOut = p.StandardOutput.ReadToEnd();
